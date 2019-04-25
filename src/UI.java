@@ -15,7 +15,6 @@ import processing.core.PApplet;
 public class UI extends PApplet
 {   
     ArrayList<GameObject> objects = new ArrayList<GameObject>(); 
-    
     /*boolean[] keys = new boolean[1024];
 
     public void keyPressed()
@@ -40,8 +39,9 @@ public class UI extends PApplet
         // Use fullscreen instead of size to make your interface fullscreen
         //fullScreen(P3D);
         
-        Radar r = new Radar(this, 1, width / 2, height / 2, 100);
-        objects.add(r);
+        
+        
+        Opening();
     }
 
     
@@ -51,6 +51,33 @@ public class UI extends PApplet
         {
             g.update();
             g.render();
+        }
+    }
+    
+    public void mouseClicked()
+    {
+        Ship();
+    }
+    
+    public void Opening()
+    {
+        Radar r = new Radar(this, 1, width / 2, height / 2, 100);
+        objects.add(r);
+    }
+    
+    public void Ship()
+    {
+        background(0);
+        stroke(50, 100, 200);
+        Radar r = new Radar(this, 1, width / 1.25f, height / 1.25f, 100);
+        objects.add(r);
+    }
+    
+    public void cleanUp()
+    {
+        for(GameObject g: objects)
+        {
+            objects.remove(g);
         }
     }
 }
