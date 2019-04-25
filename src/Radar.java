@@ -3,8 +3,6 @@ import processing.core.PVector;
 
 public class Radar extends GameObject
 {
-    private float radius;
-    private PVector pos;
     private float frequency;
     private UI ui;
     private float theta = 0;
