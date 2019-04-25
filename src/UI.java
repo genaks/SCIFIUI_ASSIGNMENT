@@ -14,7 +14,9 @@ import processing.core.PApplet;
 
 public class UI extends PApplet
 {   
-    boolean[] keys = new boolean[1024];
+    ArrayList<GameObject> objects = new ArrayList<GameObject>(); 
+    
+    /*boolean[] keys = new boolean[1024];
 
     public void keyPressed()
     {
@@ -31,21 +33,24 @@ public class UI extends PApplet
         return keys[c] || keys[Character.toUpperCase(c)];
     }
     
-
+    */
     public void settings()
     {
         size(800, 800);
         // Use fullscreen instead of size to make your interface fullscreen
-        //fullScreen(P3D); 
+        //fullScreen(P3D);
+        
+        Radar r = new Radar(this, 1, width / 2, height / 2, 100);
+        objects.add(r);
     }
 
-
+    
     public void draw()
     {
-        
-        if (checkKey(LEFT))
+        for(GameObject g: objects)
         {
-            System.out.println("Left arrow key pressed");
+            g.update();
+            g.render();
         }
     }
 }
