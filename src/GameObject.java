@@ -8,6 +8,6 @@ ff                                              /*
  *
  * @author nafy
  */
-public class GameObject {
+public class GameObject { 
     
 }
