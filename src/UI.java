@@ -61,8 +61,8 @@ public class UI extends PApplet
     
     public void Opening()
     {
-        Radar r = new Radar(this, 1, width / 2, height / 2, 100);
-        objects.add(r);
+        ArcReactor arc = new ArcReactor (this, (width/2), (height/2), 10, 10, 20 , 10);
+        objects.add(arc);
     }
     
     public void Ship()
@@ -80,4 +80,9 @@ public class UI extends PApplet
             objects.remove(g);
         }
     }
+    
+    
+    
+
+    
 }
