@@ -12,8 +12,8 @@ import processing.core.PVector;
  * @author nafy
  */
 public class GameObject {   
-    private PVector pos;
-    private float radius;
+    public PVector pos;
+    public float radius;
     
     public void update()
     {
