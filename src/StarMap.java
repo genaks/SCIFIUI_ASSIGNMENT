@@ -16,11 +16,13 @@ public class StarMap{
  float amountH;
  int i;
  int j;
+ UI ui;
  
-     public StarMap (float x, float y ){
+     public StarMap (UI ui, float x, float y ){
+         this.ui=ui;
   this.x = x;
   this.y = y;
-  this.interval = width / 32;
+  this.interval = ui.width / 32;
   this.amountW = 15;
   this.amountH =  8;
   
@@ -28,9 +30,9 @@ public class StarMap{
   
   public void render(){
     for(i = 0 ; i < amountW; i++){
-       line(x + (interval * i) , y , x + (interval * i), y +(amountH * interval)); 
+       ui.line(x + (interval * i) , y , x + (interval * i), y +(amountH * interval)); 
        for( j = 0; j <= amountH; j++){
-         line(x , y + (interval * j) , width / 2 - width / 32, y + (interval * j)); 
+         ui.line(x , y + (interval * j) , ui.width / 2 - ui.width / 32, y + (interval * j)); 
        }  
   }
     
