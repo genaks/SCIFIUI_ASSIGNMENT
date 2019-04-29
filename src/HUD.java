@@ -43,8 +43,8 @@ public class HUD extends GameObject{
         
         //loop to add 4 buttons
         for(i = 0; i < buttonAmount; i++){ 
-            for( j = 0; j < buttonAmount; j++){
-                 buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * j ,  buttonWidth));
+            for( j = 0; j < buttonAmount; j++){ 
+                         buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * j ,  buttonWidth));
             };
             buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * i ,  buttonWidth));
         };
@@ -60,145 +60,147 @@ public class HUD extends GameObject{
     }
 
     public void render(){
-     ui.background(0);
-     ui.fill(255);
-     //Covers the top white.
-     ui.rect(0,0, ui.width , borderH);
-
-     //creates the top border and bottom border layout
-     ui.fill(0,128,200);
-     ui.stroke(0);
-     ui.pushMatrix();
-     ui.translate(borderW , 0);
-     ui.rect(0 , 0, ui.width / 2 , borderH / 2);
-     ui.translate(0 , ui.height - borderW / 2);
-     ui.fill(0,128,200);
-     ui.rect(0, 0 , ui.width / 2 , borderH);
-     ui.fill(255);
-     ui.rect(0 , 0, ui.width / 2 , borderH / 4);
-     ui.stroke(0);
-     ui.popMatrix();
-
-     //creates the left side layout   
-     ui.fill(0,128,200);
-     ui.rect(0 , borderH , borderW , ui.height /2); 
-     ui.triangle(0 , borderH / 2 , 0 , borderH , borderW , borderH);
-     ui.triangle(0 , 0 , borderW , 0 , borderW , borderH / 2);
-     ui.quad(0 , (ui.height - borderH ) + (borderH / 4) , borderW , (ui.height - borderH ) + (borderH /4) , borderW + (borderW / 4) , ui.height, 0 , ui.height); 
-     ui.fill(255);
-     ui.stroke(0);
-     ui.rect(0, ui.height - borderH, borderW + (borderW / 12) ,borderH / 4);
-     ui.quad(borderW + (borderW / 12) , ui.height - borderH , borderW, ui.height - (borderH - borderH / 4) , borderW + (borderW / 4) , ui.height , (borderW + (borderW / 4)) + borderW / 8 , ui.height); 
-     ui.fill(255);
-     ui.stroke(0);
-
-     //creates the right side layout
-     ui.pushMatrix();
-     ui.translate(ui.width - borderW , 0);
-     ui.fill(0,128,200);
-     ui.rect(0 , borderH , borderW , ui.height /2);
-     ui.quad(0 , (ui.height - borderH ) + (borderH / 4) , borderW , (ui.height - borderH ) + (borderH /4) ,  borderW  , ui.height, -(borderW / 4) , ui.height); 
-     ui.triangle(borderW , borderH / 2 , 0 , borderH , borderW , borderH); 
-     ui.triangle(0 , 0 , borderW , 0 , 0 , borderH / 2);
-     ui.fill(255);
-     ui.stroke(0);
-     ui.rect(-(borderW/12), ui.height - borderH, borderW + (borderW /12) ,borderH / 4);
-     ui.quad(-(borderW / 12) , ui.height - borderH , 0, ui.height - (borderH - borderH / 4) ,  - (borderW /4 ) , ui.height ,  - (borderW / 4) - borderW / 8 , ui.height); 
-     ui.fill(255);
-     ui.popMatrix();
-
-
-     //buttons for bttom left
-     ui.strokeWeight(5);
-     for ( i = 0; i  < buttonAmount; i++){
-     ui.pushMatrix();
-     ui.translate(0,ui.height - borderH);  
-       Button button = buttons.get(i);
-       //button.update
-       button.render();
-       if (i == 0) {    
-        ui.pushMatrix();
-        ui.translate(borderW / 10, buttonInterval);
-        ui.fill(255);
-        ui.textSize(20);
-        ui.text("Radar", borderW / 4  , buttonInterval / 3);
-        ui.popMatrix();
-       }
-       else if (i == 1){
-        ui.pushMatrix();
-        ui.translate(borderW / 10, buttonInterval);
-        ui.fill(255);
-        ui.textSize(20);
-        ui.text("Map", borderW / 4  , buttonInterval + buttonInterval / 3);
-        ui.popMatrix();
-
-       }
-      ui.popMatrix(); 
-     }
-       //buttoms for bottom right 
-       for ( j = 0; j < buttonAmount; j++){
-       ui.pushMatrix();
-       ui.translate(ui.width - (borderW - borderW /10), ui.height- borderH);
-       Button button = buttons.get(j);
-       //button.update();
-       button.render();
-
-        if (j == 0) {    
-          ui.pushMatrix();
-          ui.translate(borderW / 10, buttonInterval);
-          ui.fill(255);
-          ui.textSize(20);
-          ui.text("Ship Status", borderW / 4  , buttonInterval / 3);
-          ui.popMatrix();
-       }
-         else if (j == 1){
-            ui.pushMatrix();
-            ui.translate(borderW / 10, buttonInterval);
+            ui.background(0);
             ui.fill(255);
-            ui.textSize(20);
-            ui.text("Warpdrive", borderW / 4  , buttonInterval + buttonInterval / 3);
+        //Covers the top white.
+            ui.rect(0,0, ui.width , borderH);
+
+        //creates the top border and bottom border layout
+            ui.fill(0,128,200);
+            ui.stroke(0);
+            ui.pushMatrix();
+            ui.translate(borderW , 0);
+            ui.rect(0 , 0, ui.width / 2 , borderH / 2);
+            ui.translate(0 , ui.height - borderW / 2);
+            ui.fill(0,128,200);
+            ui.rect(0, 0 , ui.width / 2 , borderH);
+            ui.fill(255);
+            ui.rect(0 , 0, ui.width / 2 , borderH / 4);
+            ui.stroke(0);
             ui.popMatrix();
-       };
-       ui.popMatrix();
-     }
 
-     //renders and updates the rader
-     r.render();
-     r.update();
+        //creates the left side layout   
+            ui.fill(0,128,200);
+            ui.rect(0 , borderH , borderW , ui.height /2); 
+            ui.triangle(0 , borderH / 2 , 0 , borderH , borderW , borderH);
+            ui.triangle(0 , 0 , borderW , 0 , borderW , borderH / 2);
+            ui.quad(0 , (ui.height - borderH ) + (borderH / 4) , borderW , (ui.height - borderH ) + (borderH /4) , borderW + (borderW / 4) , ui.height, 0 , ui.height); 
+            ui.fill(255);
+            ui.stroke(0);
+            ui.rect(0, ui.height - borderH, borderW + (borderW / 12) ,borderH / 4);
+            ui.quad(borderW + (borderW / 12) , ui.height - borderH , borderW, ui.height - (borderH - borderH / 4) , borderW + (borderW / 4) , ui.height , (borderW + (borderW / 4)) + borderW / 8 , ui.height); 
+            ui.fill(255);
+            ui.stroke(0);
 
-     //map
-     if ( ui.click == true  ){
-       ui.pushMatrix();
-       ui.translate(borderW,borderH);
-       m.render();
-       ui.popMatrix();
-     }
+        //creates the right side layout
+            ui.pushMatrix();
+            ui.translate(ui.width - borderW , 0);
+            ui.fill(0,128,200);
+            ui.rect(0 , borderH , borderW , ui.height /2);
+            ui.quad(0 , (ui.height - borderH ) + (borderH / 4) , borderW , (ui.height - borderH ) + (borderH /4) ,  borderW  , ui.height, -(borderW / 4) , ui.height); 
+            ui.triangle(borderW , borderH / 2 , 0 , borderH , borderW , borderH); 
+            ui.triangle(0 , 0 , borderW , 0 , 0 , borderH / 2);
+            ui.fill(255);
+            ui.stroke(0);
+            ui.rect(-(borderW/12), ui.height - borderH, borderW + (borderW /12) ,borderH / 4);
+            ui.quad(-(borderW / 12) , ui.height - borderH , 0, ui.height - (borderH - borderH / 4) ,  - (borderW /4 ) , ui.height ,  - (borderW / 4) - borderW / 8 , ui.height); 
+            ui.fill(255);
+            ui.popMatrix();
 
-     //time
-     ui.pushMatrix();
-     ui.translate(ui.width / 2, ui.height / 2);
-     t.render();
-     ui.popMatrix();
 
-
-     ui.pushMatrix();
-     ui.translate(ui.width - borderW , ui.height / 2);
-     //adding bar meters
-     for(i = 0; i < barAmount; i++){
-       Bar bar = bars.get(i);     
-       ui.fill(255  , 0 , 0 );     
-       bar.update();
-       bar.render();   
-       if(i == 0){
-       ui.textSize(20);
-       ui.text("Ship HP" , borderW /4 + (borderW /4  * i) , borderH - borderH/ 6);
-       }  
-       else if( i == 1){
-       ui.text("Pilot HP" , borderW /4 + (borderW /4  * i)  ,borderH - borderH/ 6);
+        //buttons for bttom left
+            ui.strokeWeight(5);
+                for ( i = 0; i  < buttonAmount; i++){
+                    ui.pushMatrix();
+                    ui.translate(0,ui.height - borderH);  
+                    Button button = buttons.get(i);
+            
+            
+            //button.update
+                button.render();
+                    if (i == 0) {    
+                        ui.pushMatrix();
+                        ui.translate(borderW / 10, buttonInterval);
+                        ui.fill(255);
+                        ui.textSize(20);
+                        ui.text("Radar", borderW / 4  , buttonInterval / 3);
+                        ui.popMatrix();
        }
-       else if ( i == 2){
+                    else if (i == 1){
+                        ui.pushMatrix();
+                        ui.translate(borderW / 10, buttonInterval);
+                        ui.fill(255);
+                        ui.textSize(20);
+                        ui.text("Map", borderW / 4  , buttonInterval + buttonInterval / 3);
+                        ui.popMatrix();
 
-       ui.text("Enemy HP" , borderW /4 + (borderW /4  * i)  , borderH - borderH/ 6);  
+       }
+                ui.popMatrix(); 
+     }
+            //buttoms for bottom right 
+                for ( j = 0; j < buttonAmount; j++){
+                    ui.pushMatrix();
+                    ui.translate(ui.width - (borderW - borderW /10), ui.height- borderH);
+                    Button button = buttons.get(j);
+            //button.update();
+                button.render();
+
+                    if (j == 0) {    
+                        ui.pushMatrix();
+                        ui.translate(borderW / 10, buttonInterval);
+                        ui.fill(255);
+                        ui.textSize(20);
+                        ui.text("Ship Status", borderW / 4  , buttonInterval / 3);
+                        ui.popMatrix();
+       }
+                else if (j == 1){
+                        ui.pushMatrix();
+                        ui.translate(borderW / 10, buttonInterval);
+                        ui.fill(255);
+                        ui.textSize(20);
+                        ui.text("Warpdrive", borderW / 4  , buttonInterval + buttonInterval / 3);
+                        ui.popMatrix();
+       };
+                        ui.popMatrix();
+     }
+
+            //renders and updates the rader
+                        r.render();
+                        r.update();
+
+            //map
+                if ( ui.click == true  ){
+                        ui.pushMatrix();
+                        ui.translate(borderW,borderH);
+                        m.render();
+                        ui.popMatrix();
+     }
+
+            //time
+                        ui.pushMatrix();
+                        ui.translate(ui.width / 2, ui.height / 2);
+                        t.render();
+                        ui.popMatrix();
+
+
+                        ui.pushMatrix();
+                        ui.translate(ui.width - borderW , ui.height / 2);
+            //adding bar meters
+                for(i = 0; i < barAmount; i++){
+                        Bar bar = bars.get(i);     
+                        ui.fill(255  , 0 , 0 );     
+                        bar.update();
+                        bar.render();   
+                if(i == 0){
+                        ui.textSize(20);
+                        ui.text("Ship HP" , borderW /4 + (borderW /4  * i) , borderH - borderH/ 6);
+       }  
+                else if( i == 1){
+                        ui.text("Pilot HP" , borderW /4 + (borderW /4  * i)  ,borderH - borderH/ 6);
+       }
+                else if ( i == 2){
+
+                        ui.text("Enemy HP" , borderW /4 + (borderW /4  * i)  , borderH - borderH/ 6);  
        }
    }
 
