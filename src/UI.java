@@ -11,10 +11,13 @@
 
 import java.util.ArrayList;
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class UI extends PApplet
 {   
-    ArrayList<GameObject> objects = new ArrayList<GameObject>(); 
+    ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    public boolean click = false;
+    PVector colour = new PVector(0, 0, 0);
     /*boolean[] keys = new boolean[1024];
 
     public void keyPressed()
@@ -47,6 +50,7 @@ public class UI extends PApplet
     
     public void draw()
     {
+        background(colour.x, colour.y, colour.z);
         for(GameObject g: objects)
         {
             g.update();
@@ -56,13 +60,24 @@ public class UI extends PApplet
     
     public void mouseClicked()
     {
+        click = true;
         Ship();
     }
     
     public void Opening()
     {
-        ArcReactor arc = new ArcReactor (this, (width/2), (height/2), 10, 10, 20 , 10);
+        ArcReactor arc = new ArcReactor (this, width/2.0f, height/2.0f, 70, 0, 70 , 50);
+        System.out.println("Arc1");
         objects.add(arc);
+        ArcReactor arc2 = new ArcReactor (this, width/2.0f, height/2.0f, 80, 70, 140 , 50);
+        System.out.println("Arc2");
+        objects.add(arc2);
+        ArcReactor arc3 = new ArcReactor (this, width/2.0f, height/2.0f, 60, 30, 100 , 50);
+        System.out.println("Arc3");
+        objects.add(arc3);
+        ArcReactor arc4 = new ArcReactor (this, width/2.0f, height/2.0f, 90, 50, 120 , 50);
+        System.out.println("Arc4");
+        objects.add(arc4);
     }
     
     public void Ship()
@@ -80,9 +95,4 @@ public class UI extends PApplet
             objects.remove(g);
         }
     }
-    
-    
-    
-
-    
 }
