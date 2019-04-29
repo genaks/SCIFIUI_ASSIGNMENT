@@ -8,7 +8,7 @@
  *
  * @author nafy
  */
-import processing.core.PApplet;
+import processing.core.PVector;
 
 public class ArcReactor extends GameObject{
 
@@ -26,8 +26,7 @@ public class ArcReactor extends GameObject{
   
   public ArcReactor (UI ui, float x, float y, float radius, float start, float stop , float frequency){
     this.ui = ui;
-    pos.x = x;
-    pos.y = y;
+    pos = new PVector(x, y);
     this.radius = radius;
     this.start = start;
     this.stop = stop;
@@ -36,15 +35,9 @@ public class ArcReactor extends GameObject{
     this.end = 0;
     this.rMax = radius + 50;
     this.rMin = radius;
-    this.strokeIntensity = 3;
+    this.strokeIntensity = 10;
   }
 
-
-    public void render(){
-    ui.strokeWeight(strokeIntensity);
-    ui.arc(0, 0, (radius * 2) , (radius * 2), s , t);
-    }
-    
     //Makes the arc increase in size when hovered over
     public void hover(){
         if ( ui.mouseX >= (ui.width / 2 - radius) && ui.mouseX <= (ui.width /2 + radius) && ui.mouseY >= ui.height / 2 -  radius && ui.mouseY <= ui.height / 2 + radius && radius < rMax){
@@ -62,6 +55,24 @@ public class ArcReactor extends GameObject{
             }
         }
     }
+    
+    public void update(){
+        s = ui.radians(start + theta);
+        t = ui.radians(stop + theta)- end;
+        theta += speed;
+
+        if(ui.click){
+            end+= 0.045;
+        }
+   }
+    
+    public void render(){
+        ui.stroke(204, 255, 255);
+        ui.strokeWeight(strokeIntensity);
+        ui.noFill();
+        ui.arc(pos.x, pos.y, (radius * 2) , (radius * 2), s , t);
+    }
+    
 }
   
  
