@@ -16,23 +16,25 @@ public class Time {
  int m;
  int h;
  String text;
+ UI ui;
  
- Time(float x, float y){
+ Time(UI ui, float x, float y){
+  this.ui=ui;
    this.x = x;
    this.y = y;
  }
   
  public void render(){
     
-    s = second();
-    m = minute();
-    h = hour();
+    s = ui.second();
+    m = ui.minute();
+    h = ui.hour();
     
     text = "Time:" + h + ":" + m + ":" + s ;
     
-    fill(255);
-    textSize(30);
-    textAlign(CENTER);
-    text(text, x , y);
+    ui.fill(255);
+    ui.textSize(30);
+    ui.textAlign(ui.CENTER);
+    ui.text(text, x , y);
   }
 }
