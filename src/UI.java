@@ -66,17 +66,13 @@ public class UI extends PApplet
     
     public void Opening()
     {
-        ArcReactor arc = new ArcReactor (this, width/2.0f, height/2.0f, 70, 0, 70 , 50);
-        System.out.println("Arc1");
+        ArcReactor arc = new ArcReactor (this, width/2.0f, height/2.0f, 70);
         objects.add(arc);
-        ArcReactor arc2 = new ArcReactor (this, width/2.0f, height/2.0f, 80, 70, 140 , 50);
-        System.out.println("Arc2");
+        ArcReactor arc2 = new ArcReactor (this, width/2.0f, height/2.0f, 80);
         objects.add(arc2);
-        ArcReactor arc3 = new ArcReactor (this, width/2.0f, height/2.0f, 60, 30, 100 , 50);
-        System.out.println("Arc3");
+        ArcReactor arc3 = new ArcReactor (this, width/2.0f, height/2.0f, 60);
         objects.add(arc3);
-        ArcReactor arc4 = new ArcReactor (this, width/2.0f, height/2.0f, 90, 50, 120 , 50);
-        System.out.println("Arc4");
+        ArcReactor arc4 = new ArcReactor (this, width/2.0f, height/2.0f, 90);
         objects.add(arc4);
     }
     
