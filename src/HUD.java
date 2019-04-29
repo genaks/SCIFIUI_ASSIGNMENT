@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author nafy
  */
 
-public class HUD {
+public class HUD extends GameObject{
   
     Time t;
     StarMap m;
@@ -26,23 +26,25 @@ public class HUD {
     int barAmount = 3;
     int j;
     int buttonWidth = borderW - borderW / 4;
+    int i; 
 
 
 
-    ArrayList<Button> buttons = new ArrayList<Button>();
-    ArrayList<Bar> bars = new ArrayList<Bar>();
+    ArrayList <Button> buttons = new ArrayList <Button>();
+    ArrayList <Bar> bars = new ArrayList<Bar>();
 
     HUD(UI ui){
         this.ui = ui;
-        this.m = new StarMap( ui.width / 32 , ui.height /32);
-        this.r = new Radar( (ui.width / 4) / 2 ,  -(ui.height / 4 ) / 2 ,100, .5,255);
+        this.m = new StarMap( ui, ui.width / 32 , ui.height /32);
+        
+        this.r = new Radar( ui, 100, (ui.width / 4) / 2 ,  -(ui.height / 4 ) / 2 , 0.5f);
         borderW = ui.width / 4;
         borderH = ui.height / 4;
         
         //loop to add 4 buttons
         for(i = 0; i < buttonAmount; i++){ 
             for( j = 0; j < buttonAmount; j++){
-                buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * j ,  buttonWidth));
+                buttons.add(new Button( borderW / 10 , (buttonInterval) + buttonInterval * j , buttonWidth));
             };
             buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * i ,  buttonWidth));
         };
@@ -57,7 +59,7 @@ public class HUD {
 
     }
 
-    void render(){
+    public void render(){
      background(0);
      fill(255);
      //Covers the top white.
