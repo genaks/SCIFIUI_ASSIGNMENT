@@ -23,15 +23,15 @@ public class ArcReactor extends GameObject{
   float rMin;
   float strokeIntensity;
   UI ui;
+  int col = 0;
   
-  public ArcReactor (UI ui, float x, float y, float radius, float start, float stop , float frequency){
+  public ArcReactor (UI ui, float x, float y, float radius){
     this.ui = ui;
     pos = new PVector(x, y);
     this.radius = radius;
-    this.start = start;
-    this.stop = stop;
-    this.frequency = frequency;
-    this.speed = (float) ((2*Math.PI / 60 ) * frequency);
+    start = ui.random(360);
+    stop = start + 70 + ui.random(180);
+    frequency = 30;
     this.end = 0;
     this.rMax = radius + 50;
     this.rMin = radius;
@@ -57,6 +57,7 @@ public class ArcReactor extends GameObject{
     }
     
     public void update(){
+        speed = (float) ((2*Math.PI / 60 ) * frequency);
         s = ui.radians(start + theta);
         t = ui.radians(stop + theta)- end;
         theta += speed;
@@ -64,13 +65,29 @@ public class ArcReactor extends GameObject{
         if(ui.click){
             end+= 0.045;
         }
+        
+        if(frequency<300)
+        {
+            frequency++;
+        }
+        
+        if(col < 200)
+        {
+            col++;
+        }
    }
     
     public void render(){
-        ui.stroke(204, 255, 255);
         ui.strokeWeight(strokeIntensity);
+        if(frequency > 299 )
+        {
+            ui.stroke(204, 255, 255, 230);
+            ui.ellipse(pos.x, pos.y, radius * 2, radius * 2);
+        }
+        ui.stroke(col + 4, col + 55, col + 55);
         ui.noFill();
         ui.arc(pos.x, pos.y, (radius * 2) , (radius * 2), s , t);
+        
     }
     
 }
