@@ -24,13 +24,13 @@ public class Bar  {
  
    private int change = 0;
   
-  public Bar (UI ui, float x , float y , float barW , float barH) {
+  public Bar (UI ui, float x , float y , float barW) {
     this.ui = ui;
    
     this.x = x;
     this.y = y;
     this.barW = barW;
-    this.barH = barH;
+    this.barH = -ui.random(30, 70);
     this.time = 60;
     this.bMax = barH - 50;
     this.bMin = 0;
