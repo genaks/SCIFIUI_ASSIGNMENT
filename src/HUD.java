@@ -30,8 +30,8 @@ public class HUD extends GameObject{
 
 
 
-    ArrayList <Button> buttons = new ArrayList <Button>();
-    ArrayList <Bar> bars = new ArrayList<Bar>();
+    ArrayList <Button> buttons = new ArrayList <>();
+    ArrayList <Bar> bars = new ArrayList<>();
 
     HUD(UI ui){
         this.ui = ui;
@@ -45,9 +45,9 @@ public class HUD extends GameObject{
         for(i = 0; i < buttonAmount; i++){ 
             for( j = 0; j < buttonAmount; j++){ 
                          buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * j ,  buttonWidth));
-            };
+            }
             buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * i ,  buttonWidth));
-        };
+        }
 
        // loop to add in the bar meters
         for( i = 0; i < barAmount; i ++){ 
@@ -58,7 +58,8 @@ public class HUD extends GameObject{
         this.t = new Time(0,borderH + (borderH / 16));
 
     }
-
+    
+    @Override
     public void render(){
             ui.background(0);
             ui.fill(255);
@@ -160,7 +161,7 @@ public class HUD extends GameObject{
                         ui.textSize(20);
                         ui.text("Warpdrive", borderW / 4  , buttonInterval + buttonInterval / 3);
                         ui.popMatrix();
-       };
+       }
                         ui.popMatrix();
      }
 
@@ -191,17 +192,20 @@ public class HUD extends GameObject{
                         ui.fill(255  , 0 , 0 );     
                         bar.update();
                         bar.render();   
-                if(i == 0){
+                switch (i) {
+                    case 0:
                         ui.textSize(20);
                         ui.text("Ship HP" , borderW /4 + (borderW /4  * i) , borderH - borderH/ 6);
-       }  
-                else if( i == 1){
+                        break;
+                    case 1:
                         ui.text("Pilot HP" , borderW /4 + (borderW /4  * i)  ,borderH - borderH/ 6);
-       }
-                else if ( i == 2){
-
-                        ui.text("Enemy HP" , borderW /4 + (borderW /4  * i)  , borderH - borderH/ 6);  
-       }
+                        break;
+                    case 2:
+                        ui.text("Enemy HP" , borderW /4 + (borderW /4  * i)  , borderH - borderH/ 6);
+                        break;
+                    default:
+                        break;
+                }
    }
 
 
