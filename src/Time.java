@@ -26,15 +26,15 @@ public class Time {
   
  public void render(){
     
-    s = ui.second();
-    m = ui.minute();
-    h = ui.hour();
+    s = UI.second();
+    m = UI.minute();
+    h = UI.hour();
     
     text = "Time:" + h + ":" + m + ":" + s ;
     
     ui.fill(255);
     ui.textSize(30);
-    ui.textAlign(ui.CENTER);
+    ui.textAlign(UI.CENTER);
     ui.text(text, x , y);
   }
 }
