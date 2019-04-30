@@ -14,13 +14,13 @@ import processing.core.PVector;
  */
 public class Button extends GameObject
 {
-    private float width;
-    private float height;
-    private String text;
-    private UI ui;
+        private float width;
+        private float height;
+        private String text;
+        private UI ui;
 
-    public Button(UI ui, float x, float y, float width, float height, String text)
-    {
+ public Button(UI ui, float x, float y, float width, float height, String text)
+ {
         this.ui = ui;
         pos = new PVector(x, y);
         this.width = width;
