@@ -15,7 +15,7 @@ import processing.core.PVector;
 
 public class UI extends PApplet
 {   
-    ArrayList<GameObject> objects = new ArrayList<GameObject>();
+    ArrayList<GameObject> objects = new ArrayList<>();
     public boolean click = false;
     PVector colour = new PVector(0, 0, 0);
     /*boolean[] keys = new boolean[1024];
