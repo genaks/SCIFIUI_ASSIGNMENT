@@ -9,31 +9,31 @@
  * @author nafy
  */
 public class StarMap{
- float x;
- float y;
- float interval;
- float amountW;
- float amountH;
- int i;
- int j;
- UI ui;
+        float x;
+        float y;
+        float interval;
+        float amountW;
+        float amountH;
+        int i;
+        int j;
+        UI ui;
  
      public StarMap (UI ui, float x, float y ){
          this.ui=ui;
-  this.x = x;
-  this.y = y;
-  this.interval = ui.width / 32;
-  this.amountW = 15;
-  this.amountH =  8;
+         this.x = x;
+         this.y = y;
+         this.interval = ui.width / 32;
+         this.amountW = 15;
+         this.amountH =  8;
   
  }
   
   public void render(){
-      ui.stroke(255);
-    for(i = 0 ; i <= amountW; i++){
-       ui.line(x + (interval * i) , y , x + (interval * i), y +(amountH * interval)); 
-       for( j = 0; j <= amountH; j++){
-         ui.line(x , y + (interval * j) , ui.width / 2 - ui.width / 32, y + (interval * j)); 
+        ui.stroke(255);
+                for(i = 0 ; i <= amountW; i++){
+                        ui.line(x + (interval * i) , y , x + (interval * i), y +(amountH * interval)); 
+                for( j = 0; j <= amountH; j++){
+                        ui.line(x , y + (interval * j) , ui.width / 2 - ui.width / 32, y + (interval * j)); 
        }  
   }
     
