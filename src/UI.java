@@ -39,7 +39,7 @@ public class UI extends PApplet
     @Override
     public void settings()
     {
-        size(800, 800);
+        size(600, 400);
         // Use fullscreen instead of size to make your interface fullscreen
         //fullScreen(P3D);
         
@@ -79,18 +79,10 @@ public class UI extends PApplet
     
     public void Ship()
     {
-        cleanUp();
+        objects.clear();
         background(0);
         stroke(50, 100, 200);
         HUD h = new HUD(this);
         objects.add(h);
-    }
-    
-    public void cleanUp()
-    {
-        for(GameObject g: objects)
-        {
-            objects.remove(g);
-        }
     }
 }
