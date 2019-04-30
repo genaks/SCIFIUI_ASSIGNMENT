@@ -36,6 +36,7 @@ public class UI extends PApplet
     }
     
     */
+    @Override
     public void settings()
     {
         size(800, 800);
@@ -78,10 +79,11 @@ public class UI extends PApplet
     
     public void Ship()
     {
+        cleanUp();
         background(0);
         stroke(50, 100, 200);
-        Radar r = new Radar(this, 1, width / 1.25f, height / 1.25f, 100);
-        objects.add(r);
+        HUD h = new HUD(this);
+        objects.add(h);
     }
     
     public void cleanUp()
