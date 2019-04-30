@@ -29,7 +29,8 @@ public class StarMap{
  }
   
   public void render(){
-    for(i = 0 ; i < amountW; i++){
+      ui.stroke(255);
+    for(i = 0 ; i <= amountW; i++){
        ui.line(x + (interval * i) , y , x + (interval * i), y +(amountH * interval)); 
        for( j = 0; j <= amountH; j++){
          ui.line(x , y + (interval * j) , ui.width / 2 - ui.width / 32, y + (interval * j)); 
