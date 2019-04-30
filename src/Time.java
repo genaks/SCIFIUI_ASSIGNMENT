@@ -10,18 +10,18 @@
  */
 public class Time {
   
- float x;
- float y;
- int s;
- int m;
- int h;
- String text;
- UI ui;
+        float x;
+        float y;
+        int s;
+        int m;
+        int h;
+        String text;
+        UI ui;
  
- Time(UI ui, float x, float y){
-  this.ui=ui;
-   this.x = x;
-   this.y = y;
+    Time(UI ui, float x, float y){
+             this.ui=ui;
+             this.x = x;
+             this.y = y;
  }
   
  public void render(){
