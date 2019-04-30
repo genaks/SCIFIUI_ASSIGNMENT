@@ -21,11 +21,12 @@ public class HUD extends GameObject{
 
     int borderW;
     int borderH;
-    int buttonAmount = 2;
+    int buttonAmount = 4;
     int buttonInterval = borderH / 3;
-    int barAmount = 3;
+    int barAmount = 4;
     int j;
-    int buttonWidth = borderW - borderW / 4;
+    int buttonWidth;
+    int buttonHeight;
     int i; 
 
 
@@ -40,22 +41,20 @@ public class HUD extends GameObject{
         this.r = new Radar( ui, 100, (ui.width / 4) / 2 ,  -(ui.height / 4 ) / 2 , 0.5f);
         borderW = ui.width / 4;
         borderH = ui.height / 4;
-        
+        buttonWidth = ui.width/25;
+        buttonHeight = ui.height/25;
         //loop to add 4 buttons
-        for(i = 0; i < buttonAmount; i++){ 
-            for( j = 0; j < buttonAmount; j++){ 
-                         buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * j ,  buttonWidth));
-            }
-            buttons.add(new Button( borderW / 10  , (buttonInterval) + buttonInterval * i ,  buttonWidth));
+        for(i = 0; i < buttonAmount; i++){
+            buttons.add(new Button(ui, (borderW/5)*(i+1)-(buttonWidth/2), ui.height - (borderH/2)-(buttonHeight/2), buttonWidth, buttonHeight, ""));
         }
 
        // loop to add in the bar meters
         for( i = 0; i < barAmount; i ++){ 
-            bars.add(new Bar(borderW / 4 + (borderW / 4 ) * i, borderH - (borderH / 4), -50 ,random(-100, -10 * i) ));
+            bars.add(new Bar(ui, ui.width - ((borderW/5)*(i+1)-(buttonWidth/2)+ buttonWidth), ui.height - (borderH * 1.25f), buttonWidth));
         }
 
         //creates 
-        this.t = new Time(0,borderH + (borderH / 16));
+        this.t = new Time(ui,0,borderH + (borderH / 16));
 
     }
     
@@ -63,6 +62,7 @@ public class HUD extends GameObject{
     public void render(){
             ui.background(0);
             ui.fill(255);
+            
         //Covers the top white.
             ui.rect(0,0, ui.width , borderH);
 
@@ -108,66 +108,11 @@ public class HUD extends GameObject{
             ui.fill(255);
             ui.popMatrix();
 
-
-        //buttons for bttom left
-            ui.strokeWeight(5);
-                for ( i = 0; i  < buttonAmount; i++){
-                    ui.pushMatrix();
-                    ui.translate(0,ui.height - borderH);  
-                    Button button = buttons.get(i);
             
             
-            //button.update
-                button.render();
-                    if (i == 0) {    
-                        ui.pushMatrix();
-                        ui.translate(borderW / 10, buttonInterval);
-                        ui.fill(255);
-                        ui.textSize(20);
-                        ui.text("Radar", borderW / 4  , buttonInterval / 3);
-                        ui.popMatrix();
-       }
-                    else if (i == 1){
-                        ui.pushMatrix();
-                        ui.translate(borderW / 10, buttonInterval);
-                        ui.fill(255);
-                        ui.textSize(20);
-                        ui.text("Map", borderW / 4  , buttonInterval + buttonInterval / 3);
-                        ui.popMatrix();
-
-       }
-                ui.popMatrix(); 
-     }
-            //buttoms for bottom right 
-                for ( j = 0; j < buttonAmount; j++){
-                    ui.pushMatrix();
-                    ui.translate(ui.width - (borderW - borderW /10), ui.height- borderH);
-                    Button button = buttons.get(j);
-            //button.update();
-                button.render();
-
-                    if (j == 0) {    
-                        ui.pushMatrix();
-                        ui.translate(borderW / 10, buttonInterval);
-                        ui.fill(255);
-                        ui.textSize(20);
-                        ui.text("Ship Status", borderW / 4  , buttonInterval / 3);
-                        ui.popMatrix();
-       }
-                else if (j == 1){
-                        ui.pushMatrix();
-                        ui.translate(borderW / 10, buttonInterval);
-                        ui.fill(255);
-                        ui.textSize(20);
-                        ui.text("Warpdrive", borderW / 4  , buttonInterval + buttonInterval / 3);
-                        ui.popMatrix();
-       }
-                        ui.popMatrix();
-     }
-
-            //renders and updates the rader
-                        r.render();
-                        r.update();
+            
+            r.render();
+            r.update();
 
             //map
                 if ( ui.click == true  ){
@@ -186,34 +131,22 @@ public class HUD extends GameObject{
 
                         ui.pushMatrix();
                         ui.translate(ui.width - borderW , ui.height / 2);
-            //adding bar meters
-                for(i = 0; i < barAmount; i++){
-                        Bar bar = bars.get(i);     
-                        ui.fill(255  , 0 , 0 );     
-                        bar.update();
-                        bar.render();   
-                switch (i) {
-                    case 0:
-                        ui.textSize(20);
-                        ui.text("Ship HP" , borderW /4 + (borderW /4  * i) , borderH - borderH/ 6);
-                        break;
-                    case 1:
-                        ui.text("Pilot HP" , borderW /4 + (borderW /4  * i)  ,borderH - borderH/ 6);
-                        break;
-                    case 2:
-                        ui.text("Enemy HP" , borderW /4 + (borderW /4  * i)  , borderH - borderH/ 6);
-                        break;
-                    default:
-                        break;
-                }
-   }
+                        ui.popMatrix();
 
-
-
-
-
-     ui.popMatrix();
-
-
+        ui.strokeWeight(5);
+        for(Button b: buttons)
+        {
+            b.update();
+            b.render();
+        }
+        for(Bar b: bars)
+        {
+            b.update();
+            b.render();
+        }
+        
+        ui.textSize(50);
+        ui.fill(255, 0, 0);
+        ui.text("Hello", ui.width/2, ui.height/2);
    }
  }
