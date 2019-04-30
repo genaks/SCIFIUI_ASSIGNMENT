@@ -56,10 +56,11 @@ public class ArcReactor extends GameObject{
         }
     }
     
+  @Override
     public void update(){
         speed = (float) ((2*Math.PI / 60 ) * frequency);
-        s = ui.radians(start + theta);
-        t = ui.radians(stop + theta)- end;
+        s = UI.radians(start + theta);
+        t = UI.radians(stop + theta)- end;
         theta += speed;
 
         if(ui.click){
@@ -77,6 +78,7 @@ public class ArcReactor extends GameObject{
         }
    }
     
+  @Override
     public void render(){
         ui.strokeWeight(strokeIntensity);
         if(frequency > 299 )
