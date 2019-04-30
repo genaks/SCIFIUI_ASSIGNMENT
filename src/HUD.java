@@ -134,16 +134,25 @@ public class HUD extends GameObject{
                         ui.popMatrix();
 
         ui.strokeWeight(5);
-        for(Button b: buttons)
-        {
+        
+        //update/render
+        buttons.stream().map((b) -> {
             b.update();
+            return b;
+        }).forEachOrdered((b) -> {
             b.render();
-        }
-        for(Bar b: bars)
-        {
+        });
+        
+        
+        
+        bars.stream().map((b) -> {
             b.update();
+            return b;
+        }).forEachOrdered((b) -> {
             b.render();
-        }
+        });
+        
+        
         
         ui.textSize(50);
         ui.fill(255, 0, 0);
