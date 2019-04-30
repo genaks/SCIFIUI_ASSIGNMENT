@@ -32,10 +32,11 @@ public class Button extends GameObject
         ui.noFill();
         ui.stroke(255);
         ui.rect(pos.x, pos.y, width, height);
-        ui.textAlign(ui.CENTER, ui.CENTER);
+        ui.textAlign(UI.CENTER, ui.CENTER);
         ui.text(text, pos.x + width * 0.5f, pos.y + height * 0.5f);
     }
     
+    @Override
     public void update(){
         
     }
